@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 9090
+        },
+        {
+            "type": "java",
+            "name": "JAVA debug",
+            "request": "launch",
+            "mainClass": "employee.Application",
+            "projectName": "starshot-java-api",
+            
+        }
+    ]
+}
