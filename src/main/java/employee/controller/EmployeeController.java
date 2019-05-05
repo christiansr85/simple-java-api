@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 import employee.model.Employee;
 import employee.service.EmployeeRepository;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class EmployeeController {
 
-    private static final String EMPLOYEE = "/employee";
-    private static final String EMPLOYEE_ID = "/employee/{id}";
+    private static final String EMPLOYEE = "/api/employee";
+    private static final String EMPLOYEE_ID = "/api/employee/{id}";
 
     @Autowired
     private EmployeeRepository repository;
