@@ -40,7 +40,7 @@ public class EmployeeController {
 
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Optional<Employee>> employee(@PathVariable String id) {
+    public ResponseEntity<Optional<Employee>> employee(@PathVariable Long id) {
         return new ResponseEntity<Optional<Employee>>(repository.findById(id), HttpStatus.OK);
     }
 
@@ -57,7 +57,7 @@ public class EmployeeController {
 
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.PATCH)
     @ResponseBody
-    public ResponseEntity<String> updateEmployee(@PathVariable String id, @RequestBody Employee employee) {
+    public ResponseEntity<String> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         Optional<Employee> opt = repository.findById(id);
         if (opt.isPresent()) {
             Employee emp = opt.get();
@@ -76,7 +76,7 @@ public class EmployeeController {
 
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity<String> updateEmployee(@PathVariable String id) {
+    public ResponseEntity<String> updateEmployee(@PathVariable Long id) {
         Optional<Employee> opt = repository.findById(id);
         if (opt.isPresent()) {
             Employee emp = opt.get();
