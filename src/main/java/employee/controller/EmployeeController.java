@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import employee.model.Employee;
 import employee.service.EmployeeRepository;
+import employee.service.SequenceGeneratorService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,6 +28,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeRepository repository;
+
+    @Autowired
+    private SequenceGeneratorService sequenceGenerator;
 
     @RequestMapping(value = EMPLOYEE, method = RequestMethod.GET)
     @ResponseBody
@@ -43,7 +47,9 @@ public class EmployeeController {
     @RequestMapping(value = EMPLOYEE, method = RequestMethod.POST, produces="application/json" )
     @ResponseBody
     public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
-        Employee emp = repository.insert(employee);
+        Employee emp = employee;
+        emp.setId(sequenceGenerator.generateSequence(Employee.SEQUENCE_EMPLOYEE));
+        repository.insert(emp);
         JSONObject obj = new JSONObject();
         obj.put("id", emp.getId());
         return new ResponseEntity<String>(obj.toString(), HttpStatus.CREATED);
