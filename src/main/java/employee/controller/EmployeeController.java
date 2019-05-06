@@ -41,24 +41,24 @@ public class EmployeeController {
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Optional<Employee>> employee(@PathVariable Long id) {
-        return new ResponseEntity<Optional<Employee>>(repository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Employee>>(repository.findByUserId(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = EMPLOYEE, method = RequestMethod.POST, produces="application/json" )
     @ResponseBody
     public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
         Employee emp = employee;
-        emp.setId(sequenceGenerator.generateSequence(Employee.SEQUENCE_EMPLOYEE));
+        emp.setUserId(sequenceGenerator.generateSequence(Employee.SEQUENCE_EMPLOYEE));
         repository.insert(emp);
         JSONObject obj = new JSONObject();
-        obj.put("id", emp.getId());
+        obj.put("userId", emp.getUserId());
         return new ResponseEntity<String>(obj.toString(), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.PATCH)
     @ResponseBody
     public ResponseEntity<String> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
-        Optional<Employee> opt = repository.findById(id);
+        Optional<Employee> opt = repository.findByUserId(id);
         if (opt.isPresent()) {
             Employee emp = opt.get();
             emp.setName(employee.getName());
@@ -77,7 +77,7 @@ public class EmployeeController {
     @RequestMapping(value = EMPLOYEE_ID, method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity<String> updateEmployee(@PathVariable Long id) {
-        Optional<Employee> opt = repository.findById(id);
+        Optional<Employee> opt = repository.findByUserId(id);
         if (opt.isPresent()) {
             Employee emp = opt.get();
             repository.delete(emp);

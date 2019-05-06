@@ -2,31 +2,40 @@ package employee.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "employees")
 public class Employee {
 
-    // @Id
-    // private String id;
+    @Id
+    private String id;
 
     @Transient
     public static final String SEQUENCE_EMPLOYEE = "employees_sequence";
  
-    @Id
-    private long id;
+    @Indexed(unique = true)
+    private long userId;
 
     private String name;
     private String clockIn;
     private String clockOut;
     private Boolean active;
 
-    public long getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public long getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getName() {

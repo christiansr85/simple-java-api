@@ -12,5 +12,5 @@ import employee.model.Employee;
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
 
     public List<Employee> findByName(String name);
-    public Optional<Employee> findById(Long id);
+    public Optional<Employee> findByUserId(Long userId);
 }

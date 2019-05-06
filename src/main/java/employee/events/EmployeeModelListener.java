@@ -20,8 +20,8 @@ public class EmployeeModelListener extends AbstractMongoEventListener<Employee> 
 
     @Override
     public void onBeforeConvert(BeforeConvertEvent<Employee> event) {
-        if (event.getSource().getId() < 1) {
-            event.getSource().setId(sequenceGenerator.generateSequence(Employee.SEQUENCE_EMPLOYEE));
+        if (event.getSource().getUserId() < 1) {
+            event.getSource().setUserId(sequenceGenerator.generateSequence(Employee.SEQUENCE_EMPLOYEE));
         }
     }
 
