@@ -23,7 +23,13 @@ import employee.service.SequenceGeneratorService;
 @RestController
 public class EmployeeController {
 
+    /**
+     * Endpoint for generic employee requests.
+     */
     private static final String EMPLOYEE = "/api/employee";
+    /**
+     * Specific endpoints for employees.
+     */
     private static final String EMPLOYEE_ID = "/api/employee/{id}";
 
     @Autowired
