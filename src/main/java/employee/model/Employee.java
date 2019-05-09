@@ -1,10 +1,17 @@
 package employee.model;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * Model to manage employees.
+ */
 @Document(collection = "employees")
 public class Employee {
 
@@ -12,6 +19,8 @@ public class Employee {
      * The internal id of the employee.
      */
     @Id
+    @NotNull
+    @ApiModelProperty(hidden = true, readOnly = true)
     private String id;
 
     /**
@@ -23,12 +32,15 @@ public class Employee {
     /**
      * Alternative numeric user id.
      */
+    @NotNull
+    @ApiModelProperty(readOnly = true)
     @Indexed(unique = true)
     private long userId;
 
     /**
      * Name of the employee.
      */
+    @NotNull
     private String name;
 
     /**

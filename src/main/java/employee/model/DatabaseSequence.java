@@ -3,6 +3,9 @@ package employee.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Database collection to handle sequence for user ids.
+ */
 @Document(collection = "database_sequences")
 public class DatabaseSequence {
  
