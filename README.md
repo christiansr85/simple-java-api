@@ -15,11 +15,11 @@ API Rest built with Java, Spring Boot, Gradle and MongoDB.
 
 ## What can we find now?
  ___
- Server is up in the url `http://127.0.0.1:9090`
+ Server is up in the url <http://127.0.0.1:9090>
  ___
 
 Once you already have started the server, you can test it through `Postman` or `Swagger`:
 
 - From `Postman`: you have to import the json collection and environment files to your postman application and then you should be able to try the api services.
 
-- From `Swagger`: you can access to the url `http://localhost:9090/swagger-ui.html#/`, where an instance of swagger is running and try the api from there.
+- From `Swagger`: you can access to the url <http://localhost:9090/swagger-ui.html#/>, where an instance of swagger is running and try the api from there.
