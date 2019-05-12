@@ -9,7 +9,7 @@ API Rest built with Java, Spring Boot, Gradle and MongoDB.
 
 ## Launch service
 
-1. Launch mongodb server through `mongod` command from a bash (you should have already a database called `starshot`)
+1. Launch mongodb server through `mongod` command from a bash (you should have already a database called `starshot`. You can change the database name from the `application.properties` file.)
 2. Unzip the source code
 3. Inside the folder where the code has been unzipped, open a terminal and execute `./gradlew bootRun` command. After a few seconds, the server has to be running
 
